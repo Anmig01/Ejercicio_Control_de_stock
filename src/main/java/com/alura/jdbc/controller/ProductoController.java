@@ -13,15 +13,22 @@ import com.alura.jdbc.factory.ConnectionFactory;
 
 public class ProductoController {
 
-	public void modificar(String nombre, String descripcion, Integer id) throws SQLException {
+	public int modificar(String nombre, String descripcion, Integer id, Integer cantidad) throws SQLException {
 		// TODO
 		Connection con = new ConnectionFactory().recuperaConexion();
 		Statement statement = con.createStatement();
 		
-		statement.execute("UPDATE producto SET NOMBRE = '" + nombre + "', "
-				+ "DESCRIPCION = '" + descripcion + "' WHERE id = " + id );
+		statement.execute("UPDATE producto SET " 
+				+ "NOMBRE = '" + nombre + "'"
+				+ ", DESCRIPCION = '" + descripcion + "'" 
+				+ ", CANTIDAD = " + cantidad 
+				+ " WHERE id = " + id);
 		
+		int updateCount =  statement.getUpdateCount();
 		
+		statement.close();
+		con.close();
+		return updateCount;
 	}
 
 	public int eliminar(Integer id) throws SQLException {
@@ -29,6 +36,7 @@ public class ProductoController {
 		Connection con = new ConnectionFactory().recuperaConexion();
 		Statement statement = con.createStatement();
 		statement.execute("DELETE FROM PRODUCTO WHERE ID = " + id);
+		con.close();
 		
 		return statement.getUpdateCount();
 		
@@ -79,6 +87,7 @@ public class ProductoController {
     		System.out.println(String.format("Fue insertado el producto con el ID %d", resultSet.getInt(1)));
 			
 		}
+    	con.close();
 	}
 
 }
