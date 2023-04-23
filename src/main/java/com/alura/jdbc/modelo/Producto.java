@@ -1,0 +1,78 @@
+package com.alura.jdbc.modelo;
+
+public class Producto {
+	
+	private Integer id;
+	private String nombre;
+	private String descripcion;
+	private Integer cantidad;
+	private Integer categoriaId;
+	
+	public Producto(String nombre, String descripcion, Integer cantidad) {
+		// TODO Auto-generated constructor stub
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.cantidad = cantidad;
+	}
+
+	public Producto(int id, String nombre, String descripcion, int cantidad ) {
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.cantidad = cantidad;
+	}
+
+	public Producto(int id, String nombre, int cantidad) {
+		// TODO Auto-generated constructor stub
+		this.id = id;
+		this.nombre = nombre;
+		this.cantidad = cantidad;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+	public void setId(int id) {
+		// TODO Auto-generated method stub
+		this.id = id;
+		
+	}
+	public Integer getId() {
+		// TODO Auto-generated method stub
+		return this.id;
+	}
+	public void setCategoriaId(Integer categoriaId) {
+		this.categoriaId = categoriaId;
+		
+	}
+	public int getCategoriaId() {
+		return this.categoriaId;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return  String.format(
+				"{id: %s, nombre: %s, descripcion: %s, cantidad: %d}", 
+				this.id, 
+				this.nombre,
+				this.descripcion, 
+				this.cantidad);
+	}
+	
+
+
+	
+	
+	
+	
+}
